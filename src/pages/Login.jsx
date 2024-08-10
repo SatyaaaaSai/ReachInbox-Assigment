@@ -1,13 +1,21 @@
 import AppBar from "../components/AppBar";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { GOOGLE_URL } from "../assets/assest";
 import Footer from "../components/Footer";
 
-const functionGoogleClick=()=>{
-  window.location.href="https://hiring.reachinbox.xyz/api/v1/auth/google-login?redirect_to="
-}
-
 const Login = () => {
+  const functionGoogleClick = () => {
+    window.location.href =
+      "https://hiring.reachinbox.xyz/api/v1/auth/google-login?redirect_to=https://reach-inbox-five.vercel.app/";
+  };
+  const navigate = useNavigate();
+  const token = localStorage.getItem("token");
+  if (token) {
+    navigate("/");
+  }
+  if (!token) {
+    navigate("/login");
+  }
   return (
     <div>
       <AppBar />
@@ -27,7 +35,7 @@ const Login = () => {
           </div>
           <div className="">
             <Link
-              to="/login" 
+              to="/login"
               className="bg-gradient-to-r from-[#4B63DD] to-[#0524BFFC] mx-16 mt-5 px-6 text-sm py-3 rounded-md cursor-pointer"
             >
               Create an Account
@@ -41,7 +49,7 @@ const Login = () => {
           </div>
         </div>
       </div>
-      <Footer/>
+      <Footer />
     </div>
   );
 };
