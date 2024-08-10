@@ -1,6 +1,7 @@
 import AppBar from "../components/AppBar";
 import { Link } from "react-router-dom";
 import { GOOGLE_URL } from "../assets/assest";
+import Footer from "../components/Footer";
 
 const functionGoogleClick=()=>{
   
@@ -40,6 +41,7 @@ const Login = () => {
           </div>
         </div>
       </div>
+      <Footer/>
     </div>
   );
 };
