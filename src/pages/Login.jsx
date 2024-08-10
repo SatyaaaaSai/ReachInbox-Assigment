@@ -4,7 +4,7 @@ import { GOOGLE_URL } from "../assets/assest";
 import Footer from "../components/Footer";
 
 const functionGoogleClick=()=>{
-  
+  window.location.href="https://hiring.reachinbox.xyz/api/v1/auth/google-login?redirect_to="
 }
 
 const Login = () => {

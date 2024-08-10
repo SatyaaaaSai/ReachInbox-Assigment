@@ -7,8 +7,8 @@ function App() {
     <div>
       <BrowserRouter>
         <Routes>
-
-          <Route path="/login" element={<Login/>} />
+          <Route exact path="/" element={<h1>Welcome to ReachInbox!</h1>} />
+          <Route exact path="/login" element={<Login />} />
         </Routes>
       </BrowserRouter>
     </div>
