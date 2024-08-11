@@ -6,10 +6,11 @@ import Footer from "../components/Footer";
 const Login = () => {
   const functionGoogleClick = () => {
     window.location.href =
-      "https://hiring.reachinbox.xyz/api/v1/auth/google-login?redirect_to=https://reach-inbox-five.vercel.app/";
+      "https://hiring.reachinbox.xyz/api/v1/auth/google-login?redirect_to=http://localhost:5173/";
   };
   const navigate = useNavigate();
   const token = localStorage.getItem("token");
+  console.log("hello");
   if (token) {
     navigate("/");
   }

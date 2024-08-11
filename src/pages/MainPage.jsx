@@ -1,9 +1,12 @@
 import { useNavigate, useLocation } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import InsideTopBar from "../components/InsideTopBar";
+import LeftBar from "../components/LeftBar";
+import MainView from "../components/MainView";
 const MainPage = () => {
   const navigate = useNavigate();
   const location = useLocation();
-
+  const [selectedComponent, setSelectedComponent] = useState(null);
   console.log(location);
 
   const queryParams = new URLSearchParams(location.search);
@@ -13,15 +16,37 @@ const MainPage = () => {
       navigate("/login", { replace: true });
     }
     if (token) {
-      localStorage.setItem("token", `Bearer${token}`);
+      localStorage.setItem("token", `Bearer ${token}`);
     }
   }, [token]);
-  return <div>
-    <h1>
-        Welcome to the Reach Inbox App!
-        {token? <p>Your token is: {token}</p> : null}
-    </h1>
-  </div>;
+
+  const handleClick = (path) => {
+    setSelectedComponent(path);
+  };
+  if (selectedComponent === null) {
+    return (
+      <div className="h-screen w-screen dark:bg-black bg-white pl-14">
+        <LeftBar onMenuItemClick={handleClick} />
+        <InsideTopBar />
+        <MainView />
+      </div>
+    );
+  }
+
+  return (
+    <div className="h-screen w-screen dark:bg-black bg-white pl-14">
+      <LeftBar onMenuItemClick={handleClick} />
+      <InsideTopBar />
+      <div>
+        {selectedComponent == "/" && <MainView />}
+        {selectedComponent == "/search" && <MainView />}
+        {selectedComponent == "/mail" && <MainView />}
+        {selectedComponent == "/send" && <MainView />}
+        {selectedComponent == "/stack" && <MainView />}
+        {selectedComponent == "/inbox" && <MainView />}
+      </div>
+    </div>
+  );
 };
 
 export default MainPage;
