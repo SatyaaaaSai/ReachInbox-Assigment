@@ -3,6 +3,8 @@ import { useEffect, useState } from "react";
 import InsideTopBar from "../components/InsideTopBar";
 import LeftBar from "../components/LeftBar";
 import MainView from "../components/MainView";
+import MailInsideMainPage from "../components/MailInsideMainPage";
+
 const MainPage = () => {
   const navigate = useNavigate();
   const location = useLocation();
@@ -43,7 +45,8 @@ const MainPage = () => {
         {selectedComponent == "/mail" && <MainView />}
         {selectedComponent == "/send" && <MainView />}
         {selectedComponent == "/stack" && <MainView />}
-        {selectedComponent == "/inbox" && <MainView />}
+        {selectedComponent == "/inbox" && <MailInsideMainPage />}
+        {selectedComponent === "/stacks" && <MainView />}
       </div>
     </div>
   );
